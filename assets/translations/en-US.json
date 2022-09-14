@@ -11,7 +11,7 @@
   },
   "denoise": {
     "none": "None",
-    "0": "Weak",
+    "0": "Moderate",
     "1": "Medium",
     "2": "Strong",
     "3": "Strongest"
