@@ -437,6 +437,8 @@ class _MainWindowPageState extends State<MainWindowPage> {
                           setState(() {
                             // デノイズが変更されたらセット
                             denoiseLevel = value ?? 'no-denoise';
+
+                            updateOutputFileName();
                           });
                         },
                       ),
