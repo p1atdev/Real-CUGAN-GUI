@@ -28,6 +28,7 @@ jobs:
           type: 'zip'
           filename: Real-CUGAN-GUI-${{ github.ref_name }}-windows.zip
           directory: build/windows/runner/Release
+          exclusions: 'data *.dll'
       - name: Windows Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
@@ -52,16 +53,20 @@ jobs:
         run: flutter config --enable-macos-desktop
       - name: Build artifacts
         run: flutter build macos --release
+      - name: Mkdir release dir
+        run: mkdir Release
+      - name: Move target
+        run: mv build/macos/Build/Products/Release/Real-CUGAN-GUI.app Release/
       - name: Archive Release
         uses: thedoctor0/zip-release@master
         with:
           type: 'zip'
           filename: Real-CUGAN-GUI-${{ github.ref_name }}-macos.zip
-          directory: build/macos/Build/Products/Release
+          directory: Release
       - name: macOS Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          files: build/macos/Build/Products/Release/Real-CUGAN-GUI-${{ github.ref_name }}-macos.zip
+          files: Release/Real-CUGAN-GUI-${{ github.ref_name }}-macos.zip
