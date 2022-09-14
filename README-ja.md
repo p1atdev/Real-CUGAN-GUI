@@ -19,6 +19,7 @@ bilibili の製作した [Real-CUGAN](https://github.com/bilibili/ailab/tree/mai
 
 - イラスト特化の超解像
 - 多言語対応
+- Windows/macOS サポート
 
 ## 例
 

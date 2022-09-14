@@ -19,6 +19,7 @@ This tool is based on [Real-ESRGAN-GUI](https://github.com/tsukumijima/Real-ESRG
 
 - AI super resolution model for anime images
 - i18n
+- Windows/macOS support
 
 ## Example
 
