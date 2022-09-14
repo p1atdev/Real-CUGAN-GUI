@@ -3,9 +3,8 @@
 
 English version
 
-<img width="600" src="https://user-images.githubusercontent.com/60182057/190080021-0d999d64-2396-4e39-861d-a25b9314aa24.png">
-
 <div align="center">
+    <img width="600" src="https://user-images.githubusercontent.com/60182057/190080021-0d999d64-2396-4e39-861d-a25b9314aa24.png">
     <a href="https://github.com/p1atdev/Real-CUGAN-GUI/actions/workflows/build.yaml" alt="Flutter CI">
         <img src="https://github.com/p1atdev/Real-CUGAN-GUI/actions/workflows/build.yaml/badge.svg"/>
     </a>
