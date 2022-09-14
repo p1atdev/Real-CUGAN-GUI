@@ -5,15 +5,18 @@ English version
 
 <img width="600" src="https://user-images.githubusercontent.com/60182057/190080021-0d999d64-2396-4e39-861d-a25b9314aa24.png">
 
+<div align="center">
+    <a href="https://github.com/p1atdev/Real-CUGAN-GUI/actions/workflows/build.yaml" alt="Flutter CI">
+        <img src="https://github.com/p1atdev/Real-CUGAN-GUI/actions/workflows/build.yaml/badge.svg"/>
+    </a>
+    <div><a href="README-ja.md">日本語</a> | English</div>
+</div>
+
 -----
 
 This is a simple GUI wrapper for a CLI tool [realcugan-ncnn-vulkan](https://github.com/nihui/realcugan-ncnn-vulkan), which is the NCNN (Vulkan) implementation of [Real-CUGAN](https://github.com/bilibili/ailab/tree/main/Real-CUGAN) produced by bilibili.
 
 This tool is based on [Real-ESRGAN-GUI](https://github.com/tsukumijima/Real-ESRGAN-GUI).
-
-- Description
-  - [日本語](README-ja.md)
-  - [English](README.md)
 
 ## Features
 
