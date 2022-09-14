@@ -1,0 +1,36 @@
+{
+  "label": {
+    "inputImage": "Original image file",
+    "outputImage": "Output image path",
+    "imageSelect": "Select file",
+    "denoise": "Denoise:",
+    "scale": "Scale:",
+    "format": "Format:",
+    "start": "Start scale up",
+    "cancel": "Cancel"
+  },
+  "denoise": {
+    "none": "None",
+    "0": "Weak",
+    "1": "Medium",
+    "2": "Strong",
+    "3": "Strongest"
+  },
+  "scale": {
+    "2x": "2x",
+    "3x": "3x",
+    "4x": "4x"
+  },
+  "format": {
+    "png": "PNG (.png)",
+    "jpeg": "JPEG (.jpg)",
+    "webp": "WebP (.webp)"
+  },
+  "message": {
+    "completed": "Image saved successfully.",
+    "close": "Close",
+    "canceled": "Canceled scaling up image.",
+    "failed": "Failed to scale up image.",
+    "errorLog": "Log:\n{}"
+  }
+}

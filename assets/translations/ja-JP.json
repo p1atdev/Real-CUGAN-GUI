@@ -1,0 +1,36 @@
+{
+  "label": {
+    "inputImage": "拡大元の画像ファイル",
+    "outputImage": "保存先のファイル",
+    "imageSelect": "ファイルを選択",
+    "denoise": "デノイズ:",
+    "scale": "拡大率:",
+    "format": "保存形式:",
+    "start": "拡大開始",
+    "cancel": "キャンセル"
+  },
+  "denoise": {
+    "none": "なし",
+    "0": "控えめ",
+    "1": "普通",
+    "2": "強め",
+    "3": "最強"
+  },
+  "scale": {
+    "2x": "2倍",
+    "3x": "3倍",
+    "4x": "4倍"
+  },
+  "format": {
+    "png": "PNG 形式",
+    "jpeg": "JPEG 形式",
+    "webp": "WebP 形式"
+  },
+  "message": {
+    "completed": "拡大した画像を保存しました。",
+    "close": "閉じる",
+    "canceled": "画像の拡大をキャンセルしました。",
+    "failed": "画像の拡大に失敗しました。",
+    "errorLog": "実行ログ:\n{}"
+  }
+}

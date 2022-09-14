@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:file_selector/file_selector.dart';
 import 'package:path/path.dart' as path;
@@ -11,6 +12,9 @@ const _projectVersion = '1.0.0';
 void main() async {
   // おまじない
   WidgetsFlutterBinding.ensureInitialized();
+
+  // ローカライズの初期化
+  await EasyLocalization.ensureInitialized();
 
   // スクリーン情報を取得
   var screen = await getCurrentScreen();
@@ -46,11 +50,17 @@ void main() async {
   setWindowTitle(_projectTitle);
 
   // アプリを起動
-  runApp(const RealESRGanGUIApp());
+  runApp(
+    EasyLocalization(
+        supportedLocales: const [Locale('ja', 'JP'), Locale('en', 'US')],
+        path: 'assets/translations',
+        fallbackLocale: const Locale('en', 'US'),
+        child: const RealCUGanGUIApp()),
+  );
 }
 
-class RealESRGanGUIApp extends StatelessWidget {
-  const RealESRGanGUIApp({super.key});
+class RealCUGanGUIApp extends StatelessWidget {
+  const RealCUGanGUIApp({super.key});
 
   // This widget is the root of your application.
   @override
@@ -65,6 +75,9 @@ class RealESRGanGUIApp extends StatelessWidget {
         ),
       ),
       home: const MainWindowPage(title: _projectTitle),
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
     );
   }
 }
@@ -98,7 +111,7 @@ class _MainWindowPageState extends State<MainWindowPage> {
   String outputFormat = 'png';
 
   // プログレスバー
-  double? progress;
+  double? progress = 0;
 
   // 拡大処理を実行中かどうか
   bool isProcessing = false;
@@ -195,13 +208,13 @@ class _MainWindowPageState extends State<MainWindowPage> {
       // Windows: Real-CUGAN-GUI/data/flutter_assets/assets/realesrgan-ncnn-vulkan.exe
       executablePath = path.join(
         path.dirname(Platform.resolvedExecutable),
-        'data/flutter_assets/assets/realcugan-ncnn-vulkan.exe',
+        'data/flutter_assets/assets/tools/realcugan-ncnn-vulkan.exe',
       );
     } else if (Platform.isMacOS) {
       // macOS: Real-CUGAN-GUI.app/Contents/Frameworks/App.framework/Versions/A/Resources/flutter_assets/assets/realesrgan-ncnn-vulkan
       executablePath = path.join(
         path.dirname(Platform.resolvedExecutable).replaceAll('MacOS', ''),
-        'Frameworks/App.framework/Versions/A/Resources/flutter_assets/assets/realcugan-ncnn-vulkan',
+        'Frameworks/App.framework/Versions/A/Resources/flutter_assets/assets/tools/realcugan-ncnn-vulkan',
       );
     }
 
@@ -262,9 +275,9 @@ class _MainWindowPageState extends State<MainWindowPage> {
       if (!mounted) return;
 
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: const Text('拡大した画像を保存しました。'),
+        content: const Text('message.completed').tr(),
         action: SnackBarAction(
-          label: '閉じる',
+          label: 'message.close'.tr(),
           onPressed: () {
             ScaffoldMessenger.of(context).hideCurrentSnackBar();
           },
@@ -278,9 +291,9 @@ class _MainWindowPageState extends State<MainWindowPage> {
       // キャンセルの場合
       if (isCanceled) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: const Text('画像の拡大をキャンセルしました。'),
+          content: const Text('message.cancelled').tr(),
           action: SnackBarAction(
-            label: '閉じる',
+            label: 'message.close'.tr(),
             onPressed: () {
               ScaffoldMessenger.of(context).hideCurrentSnackBar();
             },
@@ -292,14 +305,15 @@ class _MainWindowPageState extends State<MainWindowPage> {
           content: SingleChildScrollView(
             child: Column(
               children: [
-                const Text('画像の拡大に失敗しました'),
-                Text('実行ログ:\n${lines.join('').trim()}')
+                const Text('message.failed').tr(),
+                const Text('message.errorLog')
+                    .tr(args: [lines.join('').trim()]),
               ],
             ),
           ),
           duration: const Duration(seconds: 20), // 10秒間表示
           action: SnackBarAction(
-            label: '閉じる',
+            label: 'message.close'.tr(),
             onPressed: () {
               ScaffoldMessenger.of(context).hideCurrentSnackBar();
             },
@@ -341,9 +355,9 @@ class _MainWindowPageState extends State<MainWindowPage> {
                     Expanded(
                       child: TextField(
                         controller: inputFileController,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          labelText: '拡大元の画像ファイル',
+                        decoration: InputDecoration(
+                          border: const OutlineInputBorder(),
+                          labelText: 'label.inputImage'.tr(),
                         ),
                       ),
                     ),
@@ -383,8 +397,8 @@ class _MainWindowPageState extends State<MainWindowPage> {
                           }
                         },
                         icon: const Icon(Icons.file_open_rounded),
-                        label: const Text('ファイルを選択',
-                            style: TextStyle(fontSize: 16, height: 1.3)),
+                        label: Text('label.imageSelect'.tr(),
+                            style: const TextStyle(fontSize: 16, height: 1.3)),
                       ),
                     ),
                   ],
@@ -392,42 +406,43 @@ class _MainWindowPageState extends State<MainWindowPage> {
                 const SizedBox(height: 28),
                 TextField(
                   controller: outputFileController,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: '保存先のファイル',
+                  decoration: InputDecoration(
+                    border: const OutlineInputBorder(),
+                    labelText: 'label.outputImage'.tr(),
                   ),
                 ),
                 const SizedBox(height: 28),
                 Row(
                   children: [
-                    const SizedBox(
+                    SizedBox(
                         width: 100,
-                        child: Text('デノイズ:', style: TextStyle(fontSize: 16))),
+                        child: Text('label.denoise'.tr(),
+                            style: const TextStyle(fontSize: 16))),
                     Expanded(
                       child: DropdownButtonFormField(
                         decoration:
                             const InputDecoration(border: OutlineInputBorder()),
                         value: denoiseLevel,
-                        items: const [
+                        items: [
                           DropdownMenuItem(
                             value: '-1',
-                            child: Text('なし'),
+                            child: const Text('denoise.none').tr(),
                           ),
                           DropdownMenuItem(
                             value: '0',
-                            child: Text('控えめ'),
+                            child: const Text('denoise.0').tr(),
                           ),
                           DropdownMenuItem(
                             value: '1',
-                            child: Text('普通'),
+                            child: const Text('denoise.1').tr(),
                           ),
                           DropdownMenuItem(
                             value: '2',
-                            child: Text('強い'),
+                            child: const Text('denoise.2').tr(),
                           ),
                           DropdownMenuItem(
                             value: '3',
-                            child: Text('最強 (崩壊の可能性あり)'),
+                            child: const Text('denoise.3').tr(),
                           ),
                         ],
                         onChanged: (String? value) {
@@ -443,26 +458,27 @@ class _MainWindowPageState extends State<MainWindowPage> {
                 const SizedBox(height: 28),
                 Row(
                   children: [
-                    const SizedBox(
+                    SizedBox(
                         width: 100,
-                        child: Text('拡大率:', style: TextStyle(fontSize: 16))),
+                        child: Text('label.scale'.tr(),
+                            style: const TextStyle(fontSize: 16))),
                     Expanded(
                       child: DropdownButtonFormField(
                         decoration:
                             const InputDecoration(border: OutlineInputBorder()),
                         value: upscaleRatio,
-                        items: const [
+                        items: [
                           DropdownMenuItem(
                             value: '2x',
-                            child: Text('2倍'),
+                            child: const Text('scale.2x').tr(),
                           ),
                           DropdownMenuItem(
                             value: '3x',
-                            child: Text('3倍'),
+                            child: const Text('scale.3x').tr(),
                           ),
                           DropdownMenuItem(
                             value: '4x',
-                            child: Text('4倍'),
+                            child: const Text('scale.4x').tr(),
                           ),
                         ],
                         onChanged: (String? value) {
@@ -481,26 +497,27 @@ class _MainWindowPageState extends State<MainWindowPage> {
                 const SizedBox(height: 28),
                 Row(
                   children: [
-                    const SizedBox(
+                    SizedBox(
                         width: 100,
-                        child: Text('保存形式:', style: TextStyle(fontSize: 16))),
+                        child: Text('label.format'.tr(),
+                            style: const TextStyle(fontSize: 16))),
                     Expanded(
                       child: DropdownButtonFormField(
                         decoration:
                             const InputDecoration(border: OutlineInputBorder()),
                         value: outputFormat,
-                        items: const [
+                        items: [
                           DropdownMenuItem(
                             value: 'jpg',
-                            child: Text('JPEG 形式'),
+                            child: const Text('format.jpeg').tr(),
                           ),
                           DropdownMenuItem(
                             value: 'png',
-                            child: Text('PNG 形式'),
+                            child: const Text('format.png').tr(),
                           ),
                           DropdownMenuItem(
                             value: 'webp',
-                            child: Text('WebP 形式'),
+                            child: const Text('format.webp').tr(),
                           ),
                         ],
                         onChanged: (String? value) {
@@ -533,7 +550,8 @@ class _MainWindowPageState extends State<MainWindowPage> {
                     onPressed: _onStartButtonPressed,
                     icon:
                         Icon(isProcessing ? Icons.cancel : Icons.image_rounded),
-                    label: Text(isProcessing ? 'キャンセル' : '拡大開始',
+                    label: Text(
+                        isProcessing ? 'label.cancel'.tr() : 'label.start'.tr(),
                         style: const TextStyle(fontSize: 20, height: 1.3)),
                     style: ButtonStyle(
                         backgroundColor: isProcessing
