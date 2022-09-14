@@ -10,6 +10,8 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Set env
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
@@ -26,7 +28,7 @@ jobs:
         uses: thedoctor0/zip-release@master
         with:
           type: 'zip'
-          filename: Real-CUGAN-GUI-${{github.ref_name}}-windows.zip
+          filename: Real-CUGAN-GUI-${{ env.RELEASE_VERSION }}-windows.zip
           directory: build/windows/runner/Release
       - name: Windows Release
         uses: softprops/action-gh-release@v1
@@ -34,12 +36,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          files: build/windows/runner/Release/Real-CUGAN-GUI-${{github.ref_name}}-windows.zip
+          files: build/windows/runner/Release/Real-CUGAN-GUI-${{ env.RELEASE_VERSION }}-windows.zip
 
   build-and-release-macos:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Set env
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
       - uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
@@ -56,12 +60,12 @@ jobs:
         uses: thedoctor0/zip-release@master
         with:
           type: 'zip'
-          filename: Real-CUGAN-GUI-${{github.ref_name}}-macos.zip
+          filename: Real-CUGAN-GUI-${{ env.RELEASE_VERSION }}-macos.zip
           directory: build/macos/runner/Release
       - name: macOS Release
         uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
+        if: startsWith(env.RELEASE_VERSION, 'refs/tags/')
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          files: build/windows/runner/Release/Real-CUGAN-GUI-${{github.ref_name}}-macos.zip
+          files: build/windows/runner/Release/Real-CUGAN-GUI-${{ env.RELEASE_VERSION }}-macos.zip
