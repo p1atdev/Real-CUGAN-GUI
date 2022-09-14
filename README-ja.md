@@ -9,7 +9,7 @@
 
 bilibili の製作した [Real-CUGAN](https://github.com/bilibili/ailab/tree/main/Real-CUGAN) の NCNN (Vulkan) 実装である、[realcugan-ncnn-vulkan](https://github.com/nihui/realcugan-ncnn-vulkan) という CLI ツールのかんたんな GUI ラッパーです。
 
-このツールは [Real-ESRGAN-GUI](https://github.com/tsukumijima/Real-ESRGAN-GUI) という Real-ESRGAN の GUI ツールのフォークです。
+このツールは [Real-ESRGAN-GUI](https://github.com/tsukumijima/Real-ESRGAN-GUI) という Real-ESRGAN の GUI ツールをもとに作られています。
 
 - 説明
   - [日本語](README-ja.md)

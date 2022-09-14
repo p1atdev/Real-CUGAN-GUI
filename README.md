@@ -9,7 +9,7 @@ English version
 
 This is a simple GUI wrapper for a CLI tool [realcugan-ncnn-vulkan](https://github.com/nihui/realcugan-ncnn-vulkan), which is the NCNN (Vulkan) implementation of [Real-CUGAN](https://github.com/bilibili/ailab/tree/main/Real-CUGAN) produced by bilibili.
 
-This tool is a fork of the Real-ESRGAN GUI tool [Real-ESRGAN-GUI](https://github.com/tsukumijima/Real-ESRGAN-GUI).
+This tool is based on [Real-ESRGAN-GUI](https://github.com/tsukumijima/Real-ESRGAN-GUI).
 
 - Description
   - [日本語](README-ja.md)
