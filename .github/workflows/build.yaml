@@ -61,7 +61,7 @@ jobs:
         with:
           type: 'zip'
           filename: Real-CUGAN-GUI-${{ env.RELEASE_VERSION }}-macos.zip
-          directory: build/macos/runner/Release
+          directory: build/macos/Runner/Release
       - name: macOS Release
         uses: softprops/action-gh-release@v1
         if: startsWith(env.RELEASE_VERSION, 'refs/tags/')
