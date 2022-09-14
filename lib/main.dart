@@ -7,7 +7,7 @@ import 'package:path/path.dart' as path;
 import 'package:window_size/window_size.dart';
 
 const _projectTitle = 'Real-CUGAN-GUI';
-const _projectVersion = '1.1.0';
+const _projectVersion = '1.2.0';
 
 void main() async {
   // おまじない
