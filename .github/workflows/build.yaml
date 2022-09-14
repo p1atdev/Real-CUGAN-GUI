@@ -1,9 +1,9 @@
 name: Flutter CI
 
 on:
-  release:
-    type: [published]
-  workflow_dispatch:
+  push:
+    tags:
+      - 1.**
 
 jobs:
   build-and-release-windows:
@@ -43,7 +43,7 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
-          flutter-version: '2.18.0'
+          flutter-version: '3.3.1'
       - name: Install project dependencies
         run: flutter pub get
       - name: Generate intermediates
