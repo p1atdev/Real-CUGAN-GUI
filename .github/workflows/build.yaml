@@ -3,7 +3,7 @@ name: Flutter CI
 on:
   release:
     type: [published]
-  workflow_call:
+  workflow_dispatch:
 
 jobs:
   build-and-release-windows:
