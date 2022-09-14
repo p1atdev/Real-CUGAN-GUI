@@ -1,13 +1,14 @@
 {
   "label": {
     "inputImage": "拡大元の画像ファイル",
-    "outputImage": "保存先のファイル",
+    "outputPath": "保存先のファイル",
     "imageSelect": "ファイルを選択",
     "denoise": "デノイズ:",
     "scale": "拡大率:",
     "format": "保存形式:",
     "start": "拡大開始",
-    "cancel": "キャンセル"
+    "cancel": "キャンセル",
+    "close": "閉じる"
   },
   "denoise": {
     "none": "なし",
@@ -28,9 +29,10 @@
   },
   "message": {
     "completed": "拡大した画像を保存しました。",
-    "close": "閉じる",
     "canceled": "画像の拡大をキャンセルしました。",
     "failed": "画像の拡大に失敗しました。",
-    "errorLog": "実行ログ:\n{}"
+    "errorLog": "実行ログ:\n{}",
+    "noInputImage": "拡大元の画像ファイルが指定されていません！",
+    "noOutputPath": "保存先のファイルが指定されていません！"
   }
 }

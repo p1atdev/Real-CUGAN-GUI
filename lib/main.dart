@@ -7,7 +7,7 @@ import 'package:path/path.dart' as path;
 import 'package:window_size/window_size.dart';
 
 const _projectTitle = 'Real-CUGAN-GUI';
-const _projectVersion = '1.0.3';
+const _projectVersion = '1.1.0';
 
 void main() async {
   // おまじない
@@ -169,9 +169,9 @@ class _MainWindowPageState extends State<MainWindowPage> {
 // バリデーション
     if (inputFile == null) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: const Text('拡大元の画像ファイルが指定されていません！'),
+        content: const Text('message.noInputImage').tr(),
         action: SnackBarAction(
-          label: '閉じる',
+          label: 'label.close'.tr(),
           onPressed: () {
             ScaffoldMessenger.of(context).hideCurrentSnackBar();
           },
@@ -181,9 +181,9 @@ class _MainWindowPageState extends State<MainWindowPage> {
     }
     if (outputFileController.text == '') {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: const Text('保存先のファイルが指定されていません！'),
+        content: const Text('message.noOutputPath').tr(),
         action: SnackBarAction(
-          label: '閉じる',
+          label: 'label.close'.tr(),
           onPressed: () {
             ScaffoldMessenger.of(context).hideCurrentSnackBar();
           },
@@ -242,19 +242,7 @@ class _MainWindowPageState extends State<MainWindowPage> {
     // 標準エラー出力を受け取ったとき
     List<String> lines = []; // すべてのログを貯めるリスト
     process.stderr.transform(utf8.decoder).forEach((line) {
-      // // 22.00% みたいな進捗ログを取得
-      // var progressMatch = RegExp(r'([0-9]+\.[0-9]+)%').firstMatch(line);
-
-      // // プログレスバーを更新 (進捗ログを取得できたときのみ)
-      // if (progressMatch != null) {
-      //   setState(() {
-      //     progress = double.parse(progressMatch.group(1) ?? '0');
-      //   });
-
-      //   // 失敗したときにエラーログを表示するために受け取ったログを貯めておく
-      // } else {
       lines.add(line);
-      // }
     });
 
     // realesrgan-ncnn-vulkan の終了を待つ
@@ -277,7 +265,7 @@ class _MainWindowPageState extends State<MainWindowPage> {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: const Text('message.completed').tr(),
         action: SnackBarAction(
-          label: 'message.close'.tr(),
+          label: 'label.close'.tr(),
           onPressed: () {
             ScaffoldMessenger.of(context).hideCurrentSnackBar();
           },
@@ -293,7 +281,7 @@ class _MainWindowPageState extends State<MainWindowPage> {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: const Text('message.cancelled').tr(),
           action: SnackBarAction(
-            label: 'message.close'.tr(),
+            label: 'label.close'.tr(),
             onPressed: () {
               ScaffoldMessenger.of(context).hideCurrentSnackBar();
             },
@@ -313,7 +301,7 @@ class _MainWindowPageState extends State<MainWindowPage> {
           ),
           duration: const Duration(seconds: 20), // 10秒間表示
           action: SnackBarAction(
-            label: 'message.close'.tr(),
+            label: 'label.close'.tr(),
             onPressed: () {
               ScaffoldMessenger.of(context).hideCurrentSnackBar();
             },
@@ -408,7 +396,7 @@ class _MainWindowPageState extends State<MainWindowPage> {
                   controller: outputFileController,
                   decoration: InputDecoration(
                     border: const OutlineInputBorder(),
-                    labelText: 'label.outputImage'.tr(),
+                    labelText: 'label.outputPath'.tr(),
                   ),
                 ),
                 const SizedBox(height: 28),

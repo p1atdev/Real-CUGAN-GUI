@@ -1,13 +1,14 @@
 {
   "label": {
     "inputImage": "Original image file",
-    "outputImage": "Output image path",
+    "outputPath": "Output image path",
     "imageSelect": "Select file",
     "denoise": "Denoise:",
     "scale": "Scale:",
     "format": "Format:",
     "start": "Start scale up",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "close": "Close"
   },
   "denoise": {
     "none": "None",
@@ -28,9 +29,10 @@
   },
   "message": {
     "completed": "Image saved successfully.",
-    "close": "Close",
     "canceled": "Canceled scaling up image.",
     "failed": "Failed to scale up image.",
-    "errorLog": "Log:\n{}"
+    "errorLog": "Log:\n{}",
+    "noInputImage": "Please select an image file.",
+    "noOutputPath": "Please select an output path."
   }
 }
