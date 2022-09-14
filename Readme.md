@@ -1,5 +1,5 @@
 
-# Real-ESRGAN-GUI
+# Real-CUGAN-GUI
 
 <img width="600" src="https://user-images.githubusercontent.com/39271166/189376465-845ecfc0-3d08-4da3-8632-b2ed7ea9b6d9.png">
 
@@ -20,10 +20,10 @@ GPU には [realesrgan-ncnn-vulkan](https://github.com/xinntao/Real-ESRGAN-ncnn-
 
 <img width="600" src="https://user-images.githubusercontent.com/39271166/189310933-c0767313-faf7-417e-aed1-b6196c367379.png">
 
-[Releases](https://github.com/tsukumijima/Real-ESRGAN-GUI/releases) ページから、最新の Real-ESRGAN-GUI をダウンロードします。  
-`Real-ESRGAN-GUI-(バージョン)-windows.zip` をダウンロードしてください。
+[Releases](https://github.com/p1atdev/Real-CUGAN-GUI/releases) ページから、最新の Real-CUGAN-GUI をダウンロードします。  
+`Real-CUGAN-GUI-(バージョン)-windows.zip` をダウンロードしてください。
 
-ダウンロードが終わったら `Real-ESRGAN-GUI-(バージョン)-windows.zip` を適当なフォルダに解凍し、中の `Real-ESRGAN-GUI.exe` をダブルクリックします。  
+ダウンロードが終わったら `Real-CUGAN-GUI-(バージョン)-windows.zip` を適当なフォルダに解凍し、中の `Real-CUGAN-GUI.exe` をダブルクリックします。  
 適宜ショートカットをデスクトップに作成してみても良いでしょう。
 
 ### macOS
@@ -33,11 +33,11 @@ Intel Mac よりも、Apple Silicon 搭載 Mac の方が画像の生成が速い
 
 <img width="600" src="https://user-images.githubusercontent.com/39271166/189374416-15501eeb-41ba-452c-bef3-402dc450f31d.png">
 
-[Releases](https://github.com/tsukumijima/Real-ESRGAN-GUI/releases) ページから、最新の Real-ESRGAN-GUI をダウンロードします。  
-`Real-ESRGAN-GUI-(バージョン)-macos.zip` をダウンロードしてください。
+[Releases](https://github.com/p1atdev/Real-CUGAN-GUI/releases) ページから、最新の Real-CUGAN-GUI をダウンロードします。  
+`Real-CUGAN-GUI-(バージョン)-macos.zip` をダウンロードしてください。
 
-ダウンロードが終わったら `Real-ESRGAN-GUI-(バージョン)-macos.zip` を解凍し、中の `Real-ESRGAN-GUI.app` をアプリケーションフォルダに移動します。  
-その後、`Real-ESRGAN-GUI.app` をダブルクリックしてください。
+ダウンロードが終わったら `Real-CUGAN-GUI-(バージョン)-macos.zip` を解凍し、中の `Real-CUGAN-GUI.app` をアプリケーションフォルダに移動します。  
+その後、`Real-CUGAN-GUI.app` をダブルクリックしてください。
 
 ## 使い方
 
@@ -60,7 +60,7 @@ Intel Mac よりも、Apple Silicon 搭載 Mac の方が画像の生成が速い
 [Visual C++ 再頒布可能パッケージ 2015-2022](https://docs.microsoft.com/ja-jp/cpp/windows/latest-supported-vc-redist?view=msvc-170) のインストールが必要です。  
 [vc_redist.x64.exe](https://aka.ms/vs/17/release/vc_redist.x64.exe) をダウンロード後、ダウンロードした `vc_redist.x64.exe` をダブルクリックしてインストールしてください。
 
-インストール後にもう一度 `Real-ESRGAN-GUI.exe` をダブルクリックすると、ちゃんと起動できるはずです。
+インストール後にもう一度 `Real-CUGAN-GUI.exe` をダブルクリックすると、ちゃんと起動できるはずです。
 
 ### 拡大率を [2倍の解像度に拡大] [3倍の解像度に拡大] に設定すると、生成された画像が壊滅する
 
