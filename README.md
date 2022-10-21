@@ -1,6 +1,12 @@
 
 # Real-CUGAN-GUI
 
+> **Warning**
+> Please use [Real-ESRGAN-GUI](https://github.com/tsukumijima/Real-ESRGAN-GUI) instead.
+> Real-ESRGAN-GUI also supports CUGAN and batch processing.
+> Real-CUGAN-GUI is no longer supported.
+
+
 English version
 
 <div align="center">
